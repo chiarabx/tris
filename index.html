@@ -11,18 +11,20 @@
         <input id="sendMessage" class="btn" name="sendMessage" type="button" value="INIZIA UNA NUOVA PARTITA" onclick="resetGame()">
     </div>
     <div id="container-tris">
-        <div id="box-00" class="box vuoto" onclick="isValidStep(this)"></div>
-        <div id="box-01" class="box vuoto" onclick="isValidStep(this)"></div>
-        <div id="box-02" class="box vuoto" onclick="isValidStep(this)"></div>
-        <div id="box-10" class="box vuoto" onclick="isValidStep(this)"></div>
-        <div id="box-11" class="box vuoto" onclick="isValidStep(this)"></div>
-        <div id="box-12" class="box vuoto" onclick="isValidStep(this)"></div>
-        <div id="box-20" class="box vuoto" onclick="isValidStep(this)"></div>
-        <div id="box-21" class="box vuoto" onclick="isValidStep(this)"></div>
-        <div id="box-22" class="box vuoto" onclick="isValidStep(this)"></div>
+        <div id="box-00" class="box vuoto" onclick="tris(this)"></div>
+        <div id="box-01" class="box vuoto" onclick="tris(this)"></div>
+        <div id="box-02" class="box vuoto" onclick="tris(this)"></div>
+        <div id="box-10" class="box vuoto" onclick="tris(this)"></div>
+        <div id="box-11" class="box vuoto" onclick="tris(this)"></div>
+        <div id="box-12" class="box vuoto" onclick="tris(this)"></div>
+        <div id="box-20" class="box vuoto" onclick="tris(this)"></div>
+        <div id="box-21" class="box vuoto" onclick="tris(this)"></div>
+        <div id="box-22" class="box vuoto" onclick="tris(this)"></div>
     </div>
+    <div id="mostra-vincitore"></div>
 
     <script>
+
         
         function resetGame() {
             var boxes = document.querySelectorAll('.box'); 
@@ -45,68 +47,71 @@
         let diag2 = [matrix[0][2],matrix[1][1],matrix[2][0]];
         let statiVincenti = [col1,col2,col3,riga1,riga2,riga3,diag1,diag2];
 
-        function controlloVittoria() {
-            let arrayPosizioni = [];
-            let turno = 1
-            var boxes = document.querySelectorAll('.box'); 
-            boxes.forEach(function(elemento) {
-                arrayPosizioni.push(elemento.innerHTML);
-            })
-            let stringaVincente = '';
-            turno = -turno;
-            for(let k in statiVincenti) {
-                stringaVincente = '';
-                for(let m in statiVincenti[k]){
-                    stringaVincente += statiVincenti[k][m].innerHTML;
-                }
-                if (stringaVincente == 'XXX') {
-                    alert('SQUADRA X HA VINTO!');
-                }
-                else if (stringaVincente == 'OOO') {
-                    alert('SQUADRA O HA VINTO!');
-                }
-            }
-            //winCheck(statiVincenti);
-        }
 
-        function draw(e) {
-            let turno = 1
-            console.log(e)
-            if(turno == 1) {
-                e.innerHTML = 'X';
-                e.classList.replace('vuoto','pienoX');
+        let matrix = [['','',''],['','',''],['','','']]
+
+        function tris(cella) {
+            let idBoxString = cella.id
+            idBox = idBoxString.split('-')
+            idCella = idBox[1].split('')
+            console.log(idCella[0],idCella[1])
+            posX = idCella[1]
+            posY = idCella[0]
+            if(isValidStep(matrix,turno,posX,posY)) {
+                turno == 1 ? matrix[posY][posX] = 'X' : matrix[posY][posX] = 'O'
+                setValues(matrix)
+                if (getWinner(matrix)) showWinner(matrix)
                 turno = -turno
             } else {
-                e.innerHTML = 'O';
-                e.classList.replace('vuoto','pienoO');
-                turno = -turno
+                setTimeout(()=>{
+                    alert('LA CELLA è GIà PIENA!!');
+                },10) 
             }
         }
 
-        function isValidStep(e) {
-            e.innerHTML != '' ? console.log('not valid step') : draw(e)
+        let turno = 1
+
+        function isValidStep(matrice,turno,posX,posY) {
+            if(matrice[posY][posX] != '') {
+                return false
+            } else return true
         }
 
+        function setValues(matrice) {
+            for(let i=0; i<3; i++) {
+                for(let j=0; j<3; j++) {
+                    document.querySelector('#box-'+i+j).innerHTML = matrix[i][j]
+                }
+            }
+        }
 
-        // boxes.forEach(function(elemento) {
-        //     elemento.addEventListener("click", function(){
-        //         if(this.classList.contains('vuoto')) {
-        //             if(turno == 1) {
-        //                 this.innerHTML = 'X';
-        //                 this.classList.replace('vuoto','pienoX');
-        //             }
-        //             else {
-        //                 this.innerHTML = 'O';
-        //                 this.classList.replace('vuoto','pienoO');
-        //             }
-        //             controlloVittoria(); 
-        //         }
-        //         else {
-        //             alert('La cella è già piena!');
-        //         }
-        //     });
-        // });
+        function getWinner(matrice) {
+            if ((matrix[0][0]+matrix[0][1]+matrix[0][2] == 'XXX') || [matrix[1][0]+matrix[1][1]+matrix[1][2]] == 'XXX' || [matrix[2][0]+matrix[2][1]+matrix[2][2]] == 'XXX' || [matrix[0][0]+matrix[1][0]+matrix[2][0]] == 'XXX' || [matrix[0][1]+matrix[1][1]+matrix[2][1]] == 'XXX' || [matrix[2][0]+matrix[2][1]+matrix[2][2]] == 'XXX' || [matrix[0][0]+matrix[1][1]+matrix[2][2]] == 'XXX' || [matrix[0][2]+matrix[1][1]+matrix[2][0]] == 'XXX') {
+                return 'X'
+            }
+            if ((matrix[0][0]+matrix[0][1]+matrix[0][2] == 'OOO') || [matrix[1][0]+matrix[1][1]+matrix[1][2]] == 'OOO' || [matrix[2][0]+matrix[2][1]+matrix[2][2]] == 'OOO' || [matrix[0][0]+matrix[1][0]+matrix[2][0]] == 'OOO' || [matrix[0][1]+matrix[1][1]+matrix[2][1]] == 'OOO' || [matrix[2][0]+matrix[2][1]+matrix[2][2]] == 'OOO' || [matrix[0][0]+matrix[1][1]+matrix[2][2]] == 'OOO' || [matrix[0][2]+matrix[1][1]+matrix[2][0]] == 'OOO') {
+                return 'O'
+            }
+            else return null
+        }
 
+        function showWinner(matrice) {
+            getWinner(matrice) == 'X' ? document.querySelector('#mostra-vincitore').innerHTML = 'X VINCE' : document.querySelector('#mostra-vincitore').innerHTML = 'O VINCE'
+        }
+        
+        function resetGame() {
+            var boxes = document.querySelectorAll('.box'); 
+            boxes.forEach(function(elemento) {
+                elemento.innerHTML = ''
+            })
+            matrix = [['','',''],['','',''],['','','']]
+            document.querySelector('#mostra-vincitore').innerHTML = ''
+        }
+        
+        
+
+        
+        
 
     </script>
 </body>
@@ -117,14 +122,17 @@
         display: flex;
         justify-content: center;
         align-items:center;
+        flex-direction: column;
+        padding: 20px;
     }
     #container-tris {
         display: grid;
         grid-template-columns: 33.3333% 33.3333% 33.3333%;
         grid-template-rows: 33.3333% 33.3333% 33.3333%;
         background-color: #fff;
-        width: 600px;
-        height: 600px;
+        width: 500px;
+        height: 500px;
+        margin-top: 30px;
     }
     .box {
         border: 1px solid;
@@ -136,4 +144,19 @@
         font-size: 200px;
         font-family: sans-serif;
     }
-    </style>
+    #mostra-vincitore {
+        font-size: 40px;
+        margin-top: 20px;
+        font-family: Helvetica;
+        font-weight: 800;
+    }
+    #sendMessage {
+        font-size:25px;
+        background-color:darkblue;
+        color:white;
+        border: none;
+        box-shadow: none;
+        border-radius: 10px;
+        padding: 10px 20px;
+    }
+</style>
