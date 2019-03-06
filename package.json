@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "gioco del tris",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "karma-html2js-preprocessor": "^1.1.0"
+  },
   "devDependencies": {
     "jasmine-core": "^3.3.0",
     "karma": "^4.0.1",
@@ -11,7 +13,7 @@
     "karma-jasmine": "^2.0.1"
   },
   "scripts": {
-    "test": "prova.js"
+    "test": "./node_modules/karma/bin/karma start --single-run"
   },
   "repository": {
     "type": "git",
