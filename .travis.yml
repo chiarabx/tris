@@ -1,0 +1,17 @@
+language: node_js
+node_js: 8
+
+before_install:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+
+before_script:
+  - npm install
+  - cd functions && npm install && cd ..
+
+script:
+  - npm test 
+
+branches:
+  only:
+  - master
