@@ -1,6 +1,6 @@
 function resetGame() {
+    var boxes = document.querySelectorAll('.box'); 
     boxes.forEach(function(elemento) {
         elemento.innerHTML = ''
     })
-    matrix = [[0,0,0],[0,0,0],[0,0,0]]
 }

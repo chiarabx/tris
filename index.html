@@ -23,16 +23,16 @@
     </div>
 
     <script>
-        let matrix = [[0,0,0],[0,0,0],[0,0,0]]
-        console.log(matrix)
         
         function resetGame() {
+            var boxes = document.querySelectorAll('.box'); 
             boxes.forEach(function(elemento) {
                 elemento.innerHTML = ''
             })
-            matrix = [[0,0,0],[0,0,0],[0,0,0]]
         }
         
+        let matrix = [[0,0,0],[0,0,0],[0,0,0]]
+        console.log(matrix)
         let riga1 = [matrix[0][0],matrix[0][1],matrix[0][2]];
         let riga2 = [matrix[1][0],matrix[1][1],matrix[1][2]];
         let riga3 = [matrix[2][0],matrix[2][1],matrix[2][2]];
@@ -43,10 +43,10 @@
         let diag2 = [matrix[0][2],matrix[1][1],matrix[2][0]];
         let statiVincenti = [col1,col2,col3,riga1,riga2,riga3,diag1,diag2];
 
-        let turno = 1
-        var boxes = document.querySelectorAll('.box'); 
-        let arrayPosizioni = [];
         function controlloVittoria() {
+            let arrayPosizioni = [];
+            let turno = 1
+            var boxes = document.querySelectorAll('.box'); 
             boxes.forEach(function(elemento) {
                 arrayPosizioni.push(elemento.innerHTML);
             })
@@ -68,6 +68,8 @@
         }
 
         function draw(e) {
+            let turno = 1
+            console.log(e)
             if(turno == 1) {
                 e.innerHTML = 'X';
                 e.classList.replace('vuoto','pienoX');
