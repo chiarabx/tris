@@ -11,7 +11,7 @@
     "karma-jasmine": "^2.0.1"
   },
   "scripts": {
-    "test": "test"
+    "test": "prova.js"
   },
   "repository": {
     "type": "git",
