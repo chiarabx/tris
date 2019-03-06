@@ -24,30 +24,7 @@
     <div id="mostra-vincitore"></div>
 
     <script>
-
         
-        function resetGame() {
-            var boxes = document.querySelectorAll('.box'); 
-            boxes.forEach(function(elemento) {
-                elemento.innerHTML = ''
-
-            })
-        }
-        resetGame()
-        
-        let matrix = [[0,0,0],[0,0,0],[0,0,0]]
-        //console.log(matrix)
-        let riga1 = [matrix[0][0],matrix[0][1],matrix[0][2]];
-        let riga2 = [matrix[1][0],matrix[1][1],matrix[1][2]];
-        let riga3 = [matrix[2][0],matrix[2][1],matrix[2][2]];
-        let col1 = [matrix[0][0],matrix[1][0],matrix[2][0]];
-        let col2 = [matrix[0][1],matrix[1][1],matrix[2][1]];
-        let col3 = [matrix[2][0],matrix[2][1],matrix[2][2]];
-        let diag1 = [matrix[0][0],matrix[1][1],matrix[2][2]];
-        let diag2 = [matrix[0][2],matrix[1][1],matrix[2][0]];
-        let statiVincenti = [col1,col2,col3,riga1,riga2,riga3,diag1,diag2];
-
-
         let matrix = [['','',''],['','',''],['','','']]
 
         function tris(cella) {
@@ -64,7 +41,7 @@
                 turno = -turno
             } else {
                 setTimeout(()=>{
-                    alert('LA CELLA è GIà PIENA!!');
+                    alert('LA CELLA è GIà PIENA!!'); 
                 },10) 
             }
         }
@@ -78,16 +55,16 @@
         function setValues(matrice) {
             for(let i=0; i<3; i++) {
                 for(let j=0; j<3; j++) {
-                    document.querySelector('#box-'+i+j).innerHTML = matrix[i][j]
+                    document.querySelector('#box-'+i+j).innerHTML = matrice[i][j]
                 }
             }
         }
 
         function getWinner(matrice) {
-            if ((matrix[0][0]+matrix[0][1]+matrix[0][2] == 'XXX') || [matrix[1][0]+matrix[1][1]+matrix[1][2]] == 'XXX' || [matrix[2][0]+matrix[2][1]+matrix[2][2]] == 'XXX' || [matrix[0][0]+matrix[1][0]+matrix[2][0]] == 'XXX' || [matrix[0][1]+matrix[1][1]+matrix[2][1]] == 'XXX' || [matrix[2][0]+matrix[2][1]+matrix[2][2]] == 'XXX' || [matrix[0][0]+matrix[1][1]+matrix[2][2]] == 'XXX' || [matrix[0][2]+matrix[1][1]+matrix[2][0]] == 'XXX') {
+            if ((matrice[0][0]+matrice[0][1]+matrice[0][2] == 'XXX') || [matrice[1][0]+matrice[1][1]+matrice[1][2]] == 'XXX' || [matrice[2][0]+matrice[2][1]+matrice[2][2]] == 'XXX' || [matrice[0][0]+matrice[1][0]+matrice[2][0]] == 'XXX' || [matrice[0][1]+matrice[1][1]+matrice[2][1]] == 'XXX' || [matrice[2][0]+matrice[2][1]+matrice[2][2]] == 'XXX' || [matrice[0][0]+matrice[1][1]+matrice[2][2]] == 'XXX' || [matrice[0][2]+matrice[1][2]+matrice[2][2]] == 'XXX') {
                 return 'X'
             }
-            if ((matrix[0][0]+matrix[0][1]+matrix[0][2] == 'OOO') || [matrix[1][0]+matrix[1][1]+matrix[1][2]] == 'OOO' || [matrix[2][0]+matrix[2][1]+matrix[2][2]] == 'OOO' || [matrix[0][0]+matrix[1][0]+matrix[2][0]] == 'OOO' || [matrix[0][1]+matrix[1][1]+matrix[2][1]] == 'OOO' || [matrix[2][0]+matrix[2][1]+matrix[2][2]] == 'OOO' || [matrix[0][0]+matrix[1][1]+matrix[2][2]] == 'OOO' || [matrix[0][2]+matrix[1][1]+matrix[2][0]] == 'OOO') {
+            if ((matrice[0][0]+matrice[0][1]+matrice[0][2] == 'OOO') || [matrice[1][0]+matrice[1][1]+matrice[1][2]] == 'OOO' || [matrice[2][0]+matrice[2][1]+matrice[2][2]] == 'OOO' || [matrice[0][0]+matrice[1][0]+matrice[2][0]] == 'OOO' || [matrice[0][1]+matrice[1][1]+matrice[2][1]] == 'OOO' || [matrice[2][0]+matrice[2][1]+matrice[2][2]] == 'OOO' || [matrice[0][0]+matrice[1][1]+matrice[2][2]] == 'OOO' || [matrice[0][2]+matrice[1][2]+matrice[2][2]] == 'OOO') {
                 return 'O'
             }
             else return null
