@@ -49,9 +49,7 @@
         let turno = 1
 
         function isValidStep(matrice,turno,posX,posY) {
-            if(matrice[posY][posX] != '') {
-                return false
-            } else return true
+            return matrice[posY][posX] != '' ? false : true
         }
 
         function setValues(matrice) {
