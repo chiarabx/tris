@@ -4,9 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>TRIS GIT</title>
 </head>
 <body>
-    
+    <div class="bottoni"> 
+        <input id="sendMessage" class="btn" name="sendMessage" type="button" value="INIZIA UNA NUOVA PARTITA" onclick="resetGame()">
+    </div>
+    <div id="container-tris">
+        <div id="box-00" class="box vuoto" onclick="tris(this)"></div>
+        <div id="box-01" class="box vuoto" onclick="tris(this)"></div>
+        <div id="box-02" class="box vuoto" onclick="tris(this)"></div>
+        <div id="box-10" class="box vuoto" onclick="tris(this)"></div>
+        <div id="box-11" class="box vuoto" onclick="tris(this)"></div>
+        <div id="box-12" class="box vuoto" onclick="tris(this)"></div>
+        <div id="box-20" class="box vuoto" onclick="tris(this)"></div>
+        <div id="box-21" class="box vuoto" onclick="tris(this)"></div>
+        <div id="box-22" class="box vuoto" onclick="tris(this)"></div>
+    </div>
+    <div id="mostra-vincitore"></div>
+
+    <script src="main.js"></script>
 </body>
 </html>
