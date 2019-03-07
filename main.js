@@ -33,10 +33,10 @@ function setValues(matrice) {
 }
 
 function getWinner(matrice) {
-    if ((matrice[0][0]+matrice[0][1]+matrice[0][2] == 'XXX') || [matrice[1][0]+matrice[1][1]+matrice[1][2]] == 'XXX' || [matrice[2][0]+matrice[2][1]+matrice[2][2]] == 'XXX' || [matrice[0][0]+matrice[1][0]+matrice[2][0]] == 'XXX' || [matrice[0][1]+matrice[1][1]+matrice[2][1]] == 'XXX' || [matrice[2][0]+matrice[2][1]+matrice[2][2]] == 'XXX' || [matrice[0][0]+matrice[1][1]+matrice[2][2]] == 'XXX' || [matrice[0][2]+matrice[1][2]+matrice[2][2]] == 'XXX') {
+    if ((matrice[0][0]+matrice[0][1]+matrice[0][2] == 'XXX') || [matrice[1][0]+matrice[1][1]+matrice[1][2]] == 'XXX' || [matrice[2][0]+matrice[2][1]+matrice[2][2]] == 'XXX' || [matrice[0][0]+matrice[1][0]+matrice[2][0]] == 'XXX' || [matrice[0][1]+matrice[1][1]+matrice[2][1]] == 'XXX' || [matrice[0][2]+matrice[1][2]+matrice[2][2]] == 'XXX' || [matrice[0][0]+matrice[1][1]+matrice[2][2]] == 'XXX' || [matrice[0][2]+matrice[1][1]+matrice[2][0]] == 'XXX') {
         return 'X'
     }
-    if ((matrice[0][0]+matrice[0][1]+matrice[0][2] == 'OOO') || [matrice[1][0]+matrice[1][1]+matrice[1][2]] == 'OOO' || [matrice[2][0]+matrice[2][1]+matrice[2][2]] == 'OOO' || [matrice[0][0]+matrice[1][0]+matrice[2][0]] == 'OOO' || [matrice[0][1]+matrice[1][1]+matrice[2][1]] == 'OOO' || [matrice[2][0]+matrice[2][1]+matrice[2][2]] == 'OOO' || [matrice[0][0]+matrice[1][1]+matrice[2][2]] == 'OOO' || [matrice[0][2]+matrice[1][2]+matrice[2][2]] == 'OOO') {
+    if ((matrice[0][0]+matrice[0][1]+matrice[0][2] == 'OOO') || [matrice[1][0]+matrice[1][1]+matrice[1][2]] == 'OOO' || [matrice[2][0]+matrice[2][1]+matrice[2][2]] == 'OOO' || [matrice[0][0]+matrice[1][0]+matrice[2][0]] == 'OOO' || [matrice[0][1]+matrice[1][1]+matrice[2][1]] == 'OOO' || [matrice[0][2]+matrice[1][2]+matrice[2][2]] == 'OOO' || [matrice[0][0]+matrice[1][1]+matrice[2][2]] == 'OOO' || [matrice[0][2]+matrice[1][1]+matrice[2][0]] == 'OOO') {
         return 'O'
     }
     else return null
