@@ -16,7 +16,10 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
         'index.html',
-        'resetGameTest.js'
+        'resetGameTest.js',
+        'main.js',
+        'showWinnerTest.js',
+        'getWinnerTest.js'
     ],
 
 

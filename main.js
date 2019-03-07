@@ -43,7 +43,9 @@ function getWinner(matrice) {
 }
 
 function showWinner(matrice) {
-    getWinner(matrice) == 'X' ? document.querySelector('#mostra-vincitore').innerHTML = 'X VINCE' : document.querySelector('#mostra-vincitore').innerHTML = 'O VINCE'
+    if(getWinner(matrice) == 'X') document.querySelector('#mostra-vincitore').innerHTML = 'X VINCE'
+    if(getWinner(matrice) == 'O') document.querySelector('#mostra-vincitore').innerHTML = 'O VINCE'
+    else return null
 }
 
 function resetGame() {
