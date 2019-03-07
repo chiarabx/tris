@@ -8,15 +8,22 @@ function tris(cella) {
     console.log(idCella[0],idCella[1])
     posX = idCella[1]
     posY = idCella[0]
-    if(isValidStep(matrix,turno,posX,posY)) {
-        turno == 1 ? matrix[posY][posX] = 'X' : matrix[posY][posX] = 'O'
-        setValues(matrix)
-        if (getWinner(matrix)) showWinner(matrix)
-        turno = -turno
+    if(!getWinner(matrix)) {
+        if(isValidStep(matrix,turno,posX,posY)) {
+            turno == 1 ? matrix[posY][posX] = 'X' : matrix[posY][posX] = 'O'
+            setValues(matrix)
+            if (getWinner(matrix)) showWinner(matrix)
+            turno = -turno
+        } else {
+            setTimeout(()=>{
+                alert('LA CELLA è GIà PIENA!!'); 
+            },10) 
+        }
     } else {
         setTimeout(()=>{
-            alert('LA CELLA è GIà PIENA!!'); 
-        },10) 
+            alert('LA PARTITA è GIà TERMINATA!!')
+            resetGame() 
+        },10)
     }
 }
 
