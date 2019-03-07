@@ -3,10 +3,7 @@ describe ('testing resetGame', () => {
     var boxes 
     it ('all boxes are empty', ()=> {
         boxes = document.querySelectorAll('.box');
-        function resetGame() {
-            boxes.forEach(function(elemento) {
-            elemento.innerHTML = ''
-        })};
+        resetGame();
         expect(boxes[0].innerHTML).toBe('')
     })
 })
