@@ -1,22 +1,8 @@
-describe ('testing resetGame', () => {
-
-   document.body.innerHTML = __html__['index.html']
-   var boxes = document.querySelectorAll('.box')
-   boxes[0].innerHTML='test'
-   boxes[2]='0'
-
-	function resetGame() {
-	    boxes = document.querySelectorAll('.box'); 
-	    boxes.forEach(function(elemento) {
-	        elemento.innerHTML = ''
-	    })
-	}
-
-    it ('all boxes are empty', ()=> {
-
-    	//resetGame()
-
-        expect(boxes[0].innerHTML).toBe('')
-    })	
-
-})
+describe("cerco di vedere se lo schema è vuoto", function() {
+    document.body.innerHTML = __html__['index.html']
+    let matrix = [['','',''],['','',''],['','','']]
+    it("lo schema è vuoto", function() {
+        resetGame()
+        expect(matrix[0][0]).toBe('');
+    });
+});

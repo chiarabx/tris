@@ -3,7 +3,7 @@ describe("testo se mostra l'utente che ha vinto", function() {
     let matrix = [['X','X','O'],['O','X','O'],['X','O','X']]
     it("sta mostrando il vincitore", function() {
         showWinner(matrix)
-        expect(document.querySelector('#mostra-vincitore').innerHTML).toBe('O VINCE');
+        expect(document.querySelector('#mostra-vincitore').innerHTML).toBe('X VINCE');
     });
 });
       
