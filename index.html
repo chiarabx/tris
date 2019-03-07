@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <title>TRIS GIT</title>
 </head>
 <body>
@@ -23,140 +24,6 @@
     </div>
     <div id="mostra-vincitore"></div>
 
-    <script>
-
-        
-        function resetGame() {
-            var boxes = document.querySelectorAll('.box'); 
-            boxes.forEach(function(elemento) {
-                elemento.innerHTML = ''
-
-            })
-        }
-        resetGame()
-        
-        let matrix = [[0,0,0],[0,0,0],[0,0,0]]
-        //console.log(matrix)
-        let riga1 = [matrix[0][0],matrix[0][1],matrix[0][2]];
-        let riga2 = [matrix[1][0],matrix[1][1],matrix[1][2]];
-        let riga3 = [matrix[2][0],matrix[2][1],matrix[2][2]];
-        let col1 = [matrix[0][0],matrix[1][0],matrix[2][0]];
-        let col2 = [matrix[0][1],matrix[1][1],matrix[2][1]];
-        let col3 = [matrix[2][0],matrix[2][1],matrix[2][2]];
-        let diag1 = [matrix[0][0],matrix[1][1],matrix[2][2]];
-        let diag2 = [matrix[0][2],matrix[1][1],matrix[2][0]];
-        let statiVincenti = [col1,col2,col3,riga1,riga2,riga3,diag1,diag2];
-
-
-        let matrix = [['','',''],['','',''],['','','']]
-
-        function tris(cella) {
-            let idBoxString = cella.id
-            idBox = idBoxString.split('-')
-            idCella = idBox[1].split('')
-            console.log(idCella[0],idCella[1])
-            posX = idCella[1]
-            posY = idCella[0]
-            if(isValidStep(matrix,turno,posX,posY)) {
-                turno == 1 ? matrix[posY][posX] = 'X' : matrix[posY][posX] = 'O'
-                setValues(matrix)
-                if (getWinner(matrix)) showWinner(matrix)
-                turno = -turno
-            } else {
-                setTimeout(()=>{
-                    alert('LA CELLA è GIà PIENA!!');
-                },10) 
-            }
-        }
-
-        let turno = 1
-
-        function isValidStep(matrice,turno,posX,posY) {
-            if(matrice[posY][posX] != '') {
-                return false
-            } else return true
-        }
-
-        function setValues(matrice) {
-            for(let i=0; i<3; i++) {
-                for(let j=0; j<3; j++) {
-                    document.querySelector('#box-'+i+j).innerHTML = matrix[i][j]
-                }
-            }
-        }
-
-        function getWinner(matrice) {
-            if ((matrix[0][0]+matrix[0][1]+matrix[0][2] == 'XXX') || [matrix[1][0]+matrix[1][1]+matrix[1][2]] == 'XXX' || [matrix[2][0]+matrix[2][1]+matrix[2][2]] == 'XXX' || [matrix[0][0]+matrix[1][0]+matrix[2][0]] == 'XXX' || [matrix[0][1]+matrix[1][1]+matrix[2][1]] == 'XXX' || [matrix[2][0]+matrix[2][1]+matrix[2][2]] == 'XXX' || [matrix[0][0]+matrix[1][1]+matrix[2][2]] == 'XXX' || [matrix[0][2]+matrix[1][1]+matrix[2][0]] == 'XXX') {
-                return 'X'
-            }
-            if ((matrix[0][0]+matrix[0][1]+matrix[0][2] == 'OOO') || [matrix[1][0]+matrix[1][1]+matrix[1][2]] == 'OOO' || [matrix[2][0]+matrix[2][1]+matrix[2][2]] == 'OOO' || [matrix[0][0]+matrix[1][0]+matrix[2][0]] == 'OOO' || [matrix[0][1]+matrix[1][1]+matrix[2][1]] == 'OOO' || [matrix[2][0]+matrix[2][1]+matrix[2][2]] == 'OOO' || [matrix[0][0]+matrix[1][1]+matrix[2][2]] == 'OOO' || [matrix[0][2]+matrix[1][1]+matrix[2][0]] == 'OOO') {
-                return 'O'
-            }
-            else return null
-        }
-
-        function showWinner(matrice) {
-            getWinner(matrice) == 'X' ? document.querySelector('#mostra-vincitore').innerHTML = 'X VINCE' : document.querySelector('#mostra-vincitore').innerHTML = 'O VINCE'
-        }
-        
-        function resetGame() {
-            var boxes = document.querySelectorAll('.box'); 
-            boxes.forEach(function(elemento) {
-                elemento.innerHTML = ''
-            })
-            matrix = [['','',''],['','',''],['','','']]
-            document.querySelector('#mostra-vincitore').innerHTML = ''
-        }
-        
-        
-
-        
-        
-
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
-
-<style>
-    body {
-        display: flex;
-        justify-content: center;
-        align-items:center;
-        flex-direction: column;
-        padding: 20px;
-    }
-    #container-tris {
-        display: grid;
-        grid-template-columns: 33.3333% 33.3333% 33.3333%;
-        grid-template-rows: 33.3333% 33.3333% 33.3333%;
-        background-color: #fff;
-        width: 500px;
-        height: 500px;
-        margin-top: 30px;
-    }
-    .box {
-        border: 1px solid;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 200px;
-        font-family: sans-serif;
-    }
-    #mostra-vincitore {
-        font-size: 40px;
-        margin-top: 20px;
-        font-family: Helvetica;
-        font-weight: 800;
-    }
-    #sendMessage {
-        font-size:25px;
-        background-color:darkblue;
-        color:white;
-        border: none;
-        box-shadow: none;
-        border-radius: 10px;
-        padding: 10px 20px;
-    }
-</style>
